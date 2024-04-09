@@ -1,14 +1,16 @@
 
 <?php
+    error_reporting(E_ALL);
+    ini_set('display_errors',1);
+    session_start();
 
     include 'connection.php';
 
-    session_start();
 
-    $_SESSION['id_u'];
-    $_SESSION['nam'];
-    $_SESSION['email'];
-    $_SESSION['passwd'];
+    $_SESSION['id_u']="";
+    $_SESSION['nam']="";
+    $_SESSION['email']="";
+    $_SESSION['passwd']="";
 
 
 
@@ -69,17 +71,17 @@
 
     if(count($donnee)!=0){
 
-        $_SESSION['id_u']=$donne['id_utilisateur'];
-        $_SESSION['nam']=$donne['nam'];
-        $_SESSION['email']=$donne['email'];
-        $_SESSION['passwd']=$donne['passwd'];
+        $_SESSION['id_u']=$donnee['id_utilisateur'];
+        $_SESSION['nam']=$donnee['nam'];
+        $_SESSION['email']=$donnee['email'];
+        $_SESSION['passwd']=$donnee['passwd'];
 
     };
     
 
-    $_SESSION['nam']="amanda";
-    $_SESSION['email']="clara";
-    $_SESSION['passwd']="ooo";
+    $_SESSION['nam']="amana";
+    $_SESSION['email']="clra";
+    $_SESSION['passwd']="oo";
 
 
 
@@ -93,27 +95,22 @@
         $b = $_SESSION['email'];
         $c = $_SESSION['passwd'];
 
-        // print_r($_SESSION);
 
-        $connect =  new PDO('mysql:host=localhost;dbname=GIMMOBILIER','root','');
+        $connect = connection();
             
         if($connect != "null"){
             $sql = "UPDATE utilisateur SET nam=:nam , email=:email  WHERE id_utilisateur=:id";       
             $nv = $connect->prepare($sql);
-            var_dump($nv);
             $nv->bindValue(':nam' , $a);
             $nv->bindValue(':email' , $b);
-            $nv->bindValue(':passwd' , $c);
-            $nv->bindValue(':id' , $id , PDO::PARAM_INT);
-            // var_dump($nv);
+            $nv->bindValue(':id' , $id);
             $nv->execute();
-            echo "bonjour";
-            
 
         }
 
 
     }
+
 
 
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : mar. 09 avr. 2024 à 23:45
+-- Généré le : mer. 17 avr. 2024 à 20:49
 -- Version du serveur : 10.4.28-MariaDB
 -- Version de PHP : 8.2.4
 
@@ -32,7 +32,14 @@ CREATE TABLE `apartement` (
   `name_apart` varchar(50) NOT NULL COMMENT 'nom de l''appartement',
   `location` int(1) NOT NULL DEFAULT 1 COMMENT 'cet atribut peut avoir deux valeurs \r\n(1) si l''appartement peut etre loue et\r\n(0) si non',
   `prix_Par_Nuit` int(11) NOT NULL DEFAULT 0 COMMENT 'prix ...',
+  `prix_par_heur` int(11) NOT NULL,
+  `ville` varchar(100) NOT NULL COMMENT 'ville dans la quelle se trouve l''appart',
+  `localisation` varchar(200) NOT NULL COMMENT 'quatier ou se trouve l''appart',
   `description` text NOT NULL COMMENT 'texte qui decrit l''appartement',
+  `douche` int(11) NOT NULL COMMENT 'nombre de douche de l''appart',
+  `chambre` int(11) NOT NULL COMMENT 'nombre de chambre de l''appart',
+  `cuisine` int(11) NOT NULL COMMENT 'nombre de cuisine de l''appart',
+  `parking` varchar(3) NOT NULL,
   `photo` varchar(50) NOT NULL COMMENT 'url de la photo de l''appartement',
   `create_at_apart` datetime NOT NULL DEFAULT current_timestamp() COMMENT 'date a laquelle l''apartement a ete inserer',
   `update_at_apart` datetime DEFAULT '0000-00-00 00:00:00' COMMENT 'date de la dernierre modification',
@@ -43,19 +50,23 @@ CREATE TABLE `apartement` (
 -- Déchargement des données de la table `apartement`
 --
 
-INSERT INTO `apartement` (`id_apartement`, `name_apart`, `location`, `prix_Par_Nuit`, `description`, `photo`, `create_at_apart`, `update_at_apart`, `rmva`) VALUES
-(1, 'hhhhhhhhhhhh', 0, 888800, 'hjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj', 'jjjjjjjjjjjjjjjjjjjjjjjjjjjj', '2024-03-12 16:59:29', '0000-00-00 00:00:00', 1),
-(2, 'fabien', 1, 30000, 'asdfcgvhbjnkmjhgfdcwesdfcgvb', 'dftyuihgfgh', '2024-03-12 17:23:50', '0000-00-00 00:00:00', 0),
-(3, 'fabien lorent ', 1, 30000, 'asdfcgvhbjnkmjhgfdcwesdfcgvb', 'dftyuihgfgh', '2024-03-12 18:00:46', '0000-00-00 00:00:00', 0),
-(4, 'amanda', 1, 30000, 'asdfcgvhbjnkmjhgfdcwesdfcgvb', 'dftyuihgfgh', '2024-03-12 18:05:06', '2024-03-12 21:22:01', 1),
-(5, 'werty', 0, 0, 'bonjour jogo', 'jogo.png', '2024-03-12 18:05:06', '2024-03-12 23:25:46', 1),
-(6, 'fabien lorent JU\'ju ', 1, 30000, 'asdfcgvhbjnkmjhgfdcwesdfcgvb', 'dftyuihgfgh', '2024-03-12 18:05:06', '0000-00-00 00:00:00', 1),
-(7, 'fortune', 0, 1, 'bonsoir fortune', 'fortune.png', '2024-03-12 18:05:21', '2024-03-13 09:22:16', 1),
-(9, 'amanda lorent JU\'ju ', 0, 66200, 'br', 'mae png', '2024-03-12 18:08:27', '2024-03-15 16:04:39', 1),
-(10, 'amanda lorent JU\'ju ', 1, 30000, 'asdfcgvhbjnkmjhgfdcwesdfcgvb', 'dftyuihgfgh', '2024-03-12 19:30:00', '0000-00-00 00:00:00', 1),
-(11, 'amanda lorent J\'ju ', 1, 30000, 'asdfcgvhbjnkmjhgfdcwesdfcgvb', 'dftyuihgfgh', '2024-03-15 16:03:22', '0000-00-00 00:00:00', 1),
-(12, 'amanda lorent J\'ju ', 1, 30000, 'asdfcgvhbjnkmjhgfdcwesdfcgvb', 'dftyuihgfgh', '2024-04-05 08:31:05', '0000-00-00 00:00:00', 1),
-(13, 'amanda lorent iiiiiiiiiiiooooooo J\'ju ', 1, 30000, 'asdfcgvhbjnkmjhgfdcwesdfcgvb', 'dftyuihgfgh', '2024-04-05 08:31:18', '0000-00-00 00:00:00', 0);
+INSERT INTO `apartement` (`id_apartement`, `name_apart`, `location`, `prix_Par_Nuit`, `prix_par_heur`, `ville`, `localisation`, `description`, `douche`, `chambre`, `cuisine`, `parking`, `photo`, `create_at_apart`, `update_at_apart`, `rmva`) VALUES
+(1, 'hhhhhhhhhhhh', 0, 888800, 0, '', '', 'hjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj', 0, 0, 0, '0', 'jjjjjjjjjjjjjjjjjjjjjjjjjjjj', '2024-03-12 16:59:29', '0000-00-00 00:00:00', 1),
+(2, 'fabien', 1, 30000, 0, '', '', 'asdfcgvhbjnkmjhgfdcwesdfcgvb', 0, 0, 0, '0', 'dftyuihgfgh', '2024-03-12 17:23:50', '0000-00-00 00:00:00', 0),
+(3, 'fabien lorent ', 1, 30000, 0, '', '', 'asdfcgvhbjnkmjhgfdcwesdfcgvb', 0, 0, 0, '0', 'dftyuihgfgh', '2024-03-12 18:00:46', '0000-00-00 00:00:00', 0),
+(4, 'amanda', 1, 30000, 0, '', '', 'asdfcgvhbjnkmjhgfdcwesdfcgvb', 0, 0, 0, '0', 'dftyuihgfgh', '2024-03-12 18:05:06', '2024-03-12 21:22:01', 1),
+(5, 'werty', 0, 0, 0, '', '', 'bonjour jogo', 0, 0, 0, '0', 'jogo.png', '2024-03-12 18:05:06', '2024-03-12 23:25:46', 1),
+(6, 'fabien lorent JU\'ju ', 1, 30000, 0, '', '', 'asdfcgvhbjnkmjhgfdcwesdfcgvb', 0, 0, 0, '0', 'dftyuihgfgh', '2024-03-12 18:05:06', '0000-00-00 00:00:00', 1),
+(7, 'fortune', 0, 1, 0, '', '', 'bonsoir fortune', 0, 0, 0, '0', 'fortune.png', '2024-03-12 18:05:21', '2024-03-13 09:22:16', 1),
+(9, 'amanda lorent JU\'ju ', 0, 66200, 0, '', '', 'br', 0, 0, 0, '0', 'mae png', '2024-03-12 18:08:27', '2024-03-15 16:04:39', 1),
+(10, 'amanda lorent JU\'ju ', 1, 30000, 0, '', '', 'asdfcgvhbjnkmjhgfdcwesdfcgvb', 0, 0, 0, '0', 'dftyuihgfgh', '2024-03-12 19:30:00', '0000-00-00 00:00:00', 1),
+(11, 'amanda lorent J\'ju ', 1, 30000, 0, '', '', 'asdfcgvhbjnkmjhgfdcwesdfcgvb', 0, 0, 0, '0', 'dftyuihgfgh', '2024-03-15 16:03:22', '0000-00-00 00:00:00', 1),
+(12, 'amanda lorent J\'ju ', 1, 30000, 0, '', '', 'asdfcgvhbjnkmjhgfdcwesdfcgvb', 0, 0, 0, '0', 'dftyuihgfgh', '2024-04-05 08:31:05', '0000-00-00 00:00:00', 1),
+(13, 'amanda lorent iiiiiiiiiiiooooooo J\'ju ', 1, 30000, 0, '', '', 'asdfcgvhbjnkmjhgfdcwesdfcgvb', 0, 0, 0, '0', 'dftyuihgfgh', '2024-04-05 08:31:18', '0000-00-00 00:00:00', 0),
+(14, 'amanda', 1, 1000, 100, 'DOUALA', 'Ndogbon', 'bla bla bla', 2, 5, 1, 'oui', 'photo.png', '2024-04-17 19:34:24', '0000-00-00 00:00:00', 1),
+(15, 'amanda', 1, 1000, 100, 'DOUALA', 'Ndogbon', 'bla bla bla', 2, 5, 1, 'oui', 'photo.png', '2024-04-17 19:34:25', '0000-00-00 00:00:00', 1),
+(16, 'amanda', 1, 1000, 100, 'DOUALA', 'Ndogbon', 'bla bla bla', 2, 5, 1, 'oui', 'photo.png', '2024-04-17 19:35:02', '0000-00-00 00:00:00', 1),
+(17, 'amanda', 1, 1000, 100, 'DOUALA', 'Ndogbon', 'bla bla bla', 2, 5, 1, 'oui', 'photo.png', '2024-04-17 19:35:03', '0000-00-00 00:00:00', 1);
 
 -- --------------------------------------------------------
 
@@ -233,7 +244,7 @@ ALTER TABLE `vehicule`
 -- AUTO_INCREMENT pour la table `apartement`
 --
 ALTER TABLE `apartement`
-  MODIFY `id_apartement` int(11) NOT NULL AUTO_INCREMENT COMMENT 'identifiant de la table', AUTO_INCREMENT=14;
+  MODIFY `id_apartement` int(11) NOT NULL AUTO_INCREMENT COMMENT 'identifiant de la table', AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT pour la table `reservation_appart`

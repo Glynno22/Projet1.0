@@ -105,13 +105,14 @@
             $nv->bindValue(':email' , $b);
             $nv->bindValue(':id' , $id);
             $nv->execute();
+            echo "bb";
 
         }
 
 
     }
 
-
+modification_utilisateur(12);
 
 
     //SUPRESSION D'UN UTILISATEUR

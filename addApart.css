@@ -1,0 +1,70 @@
+body {
+    background: url(images/pro.jpg) ;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+
+
+#fPrincipale {
+
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120vh;
+    height: 70vh;
+    overflow: hidden;
+    z-index: 2;
+    background-color: rgba(255, 255, 255, 0.774);
+    border-radius: 6vh;
+    
+}
+
+#foorm {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+#h3 {
+    text-decoration: solid;
+    -webkit-text-stroke-width: 0.5vh;
+    color: rgb(226, 155, 24);
+} 
+
+#id1 {
+    background-color: rgba(255, 166, 0, 0.342);
+
+    color: black;
+    font-size: larger;
+    border-radius: 30px;
+    border: none;
+    transition: .2s ease;
+    margin-top: -4vh;
+    padding: 1vh;
+}
+
+
+#b1 {
+    border-radius: 3vh;
+    margin-top: -8vh;
+    background-color: rgb(226, 155, 24);
+    border: none;
+    margin-top: 1px;
+    margin-top: -26px;
+}
+
+#b2 {
+    border-radius: 3vh;
+    margin-top: -8vh;
+    background-color: rgb(226, 155, 24);
+    border: none;
+    margin-top: -26px;
+} 
+
+
+
